@@ -8,3 +8,8 @@ Quartz is a set of tools that helps you publish your [digital garden](https://jz
 Quartz v4 features a from-the-ground rewrite focusing on end-user extensibility and ease-of-use.
 
 🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
+
+
+# Reference
+- https://notes.nicolevanderhoeven.com/How+to+publish+Obsidian+notes+with+Quartz+on+GitHub+Pages
+- https://www.youtube.com/watch?v=6s6DT1yN4dw&t=967s

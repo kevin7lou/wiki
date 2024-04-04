@@ -7,8 +7,9 @@ export const sharedPageComponents: SharedLayout = {
   header: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      "Github": { link: "https://github.com/kevin7lou", icon: "fa-brands fa-github", iconcolor: "purple" },
+      "Blog": { link: "https://kevin7lou.github.io", icon: "fa-solid fa-blog", iconcolor: "orange" },
+      "Twitter": { link: "https://twitter.com/kevin7lou", icon: "fa-brands fa-twitter", iconcolor: "blue" },
     },
   }),
 }
@@ -26,6 +27,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
+    Component.DesktopOnly(Component.RecentNotes({limit: 2})),
     Component.DesktopOnly(Component.Explorer()),
   ],
   right: [
