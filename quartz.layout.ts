@@ -7,9 +7,9 @@ export const sharedPageComponents: SharedLayout = {
   header: [],
   footer: Component.Footer({
     links: {
-      "Github": { link: "https://github.com/kevin7lou", icon: "fa-brands fa-github", iconcolor: "purple" },
-      "Blog": { link: "https://kevin7lou.github.io", icon: "fa-solid fa-blog", iconcolor: "orange" },
-      "Twitter": { link: "https://twitter.com/kevin7lou", icon: "fa-brands fa-twitter", iconcolor: "blue" },
+      "👨‍💻 Github": "https://github.com/kevin7lou",
+      "📝 Blog": "https://kevin7lou.github.io",
+      "🐦 Twitter": "https://twitter.com/kevin7lou",
     },
   }),
 }
