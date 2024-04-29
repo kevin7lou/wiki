@@ -1,5 +1,6 @@
 ---
 title: Chap 1. 描述性统计
+date: 2024-02-05
 ---
 
 # 1 描述统计量
@@ -49,8 +50,7 @@ title: Chap 1. 描述性统计
 **皮尔逊积矩相关系数** | Correlation - Pearson
 - 相关系数 | coefficient of correlation
 	- …表示两个变量之间的关联（相关）程度的指标。==相关系数越接近 1，正相关就越强；越接近 -1，负相关就越强；0 表示不相关。==
-	- $$r = \frac{{}\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}
-	  {\sqrt{\sum_{i=1}^{n} (x_i - \overline{x})^2(y_i - \overline{y})^2}}$$
+	- $$r = \frac{{}\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{\sqrt{\sum_{i=1}^{n} (x_i - \overline{x})^2(y_i - \overline{y})^2}}$$
 **斯皮尔曼等级相关系数** | Correlation - Spearman
 	被观测的两个变量的等级的差值 $d_i = x_i - y_i$
 	$$\rho = 1- {\frac {6 \sum d_i^2}{n(n^2 - 1)}}$$
