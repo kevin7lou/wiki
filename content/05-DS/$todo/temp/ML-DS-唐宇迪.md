@@ -1,0 +1,12 @@
+-
+- # 回归算法
+	- ## 线性回归
+		- ### 线性回归方程
+			- ![image.png](../assets/image_1663387201251_0.png){:height 72, :width 325}
+		- ### 误差分析
+			- ![image.png](../assets/image_1663387306695_0.png)
+		- ### 似然函数求解
+			- ![image.png](../assets/image_1663387378560_0.png)
+			- ![image.png](../assets/image_1663387395463_0.png)
+-
+-
