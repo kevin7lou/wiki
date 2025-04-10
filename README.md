@@ -1,6 +1,6 @@
 # 🌱 My Personal Wiki
 
-[![Quartz-Build-Deploy](https://github.com/kevin7lou/wiki/actions/workflows/deploy.yml/badge.svg)](https://github.com/kevin7lou/wiki/actions/workflows/deploy.yml)
+[![Quartz-Build-Deploy](https://github.com/kevin7lou/wiki/actions/workflows/deploy.yml/badge.svg?branch=v4)](https://github.com/kevin7lou/wiki/actions/workflows/deploy.yml)
 
 > “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
 
