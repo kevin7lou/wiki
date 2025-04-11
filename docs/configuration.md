@@ -21,6 +21,7 @@ const config: QuartzConfig = {
 This part of the configuration concerns anything that can affect the whole site. The following is a list breaking down all the things you can configure:
 
 - `pageTitle`: title of the site. This is also used when generating the [[RSS Feed]] for your site.
+- `pageTitleSuffix`: a string added to the end of the page title. This only applies to the browser tab title, not the title shown at the top of the page.
 - `enableSPA`: whether to enable [[SPA Routing]] on your site.
 - `enablePopovers`: whether to enable [[popover previews]] on your site.
 - `analytics`: what to use for analytics on your site. Values can be
@@ -38,11 +39,12 @@ This part of the configuration concerns anything that can affect the whole site.
 - `ignorePatterns`: a list of [glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) patterns that Quartz should ignore and not search through when looking for files inside the `content` folder. See [[private pages]] for more details.
 - `defaultDateType`: whether to use created, modified, or published as the default date to display on pages and page listings.
 - `theme`: configure how the site looks.
-  - `cdnCaching`: If `true` (default), use Google CDN to cache the fonts. This will generally will be faster. Disable (`false`) this if you want Quartz to download the fonts to be self-contained.
+  - `cdnCaching`: if `true` (default), use Google CDN to cache the fonts. This will generally be faster. Disable (`false`) this if you want Quartz to download the fonts to be self-contained.
   - `typography`: what fonts to use. Any font available on [Google Fonts](https://fonts.google.com/) works here.
-    - `header`: Font to use for headers
-    - `code`: Font for inline and block quotes.
-    - `body`: Font for everything
+    - `title`: font for the title of the site (optional, same as `header` by default)
+    - `header`: font to use for headers
+    - `code`: font for inline and block quotes
+    - `body`: font for everything
   - `colors`: controls the theming of the site.
     - `light`: page background
     - `lightgray`: borders
@@ -52,6 +54,7 @@ This part of the configuration concerns anything that can affect the whole site.
     - `secondary`: link colour, current [[graph view|graph]] node
     - `tertiary`: hover states and visited [[graph view|graph]] nodes
     - `highlight`: internal link background, highlighted text, [[syntax highlighting|highlighted lines of code]]
+    - `textHighlight`: markdown highlighted text background
 
 ## Plugins
 
@@ -99,8 +102,30 @@ transformers: [
 ]
 ```
 
-Some plugins are included by default in the[ `quartz.config.ts`](https://github.com/jackyzha0/quartz/blob/v4/quartz.config.ts), but there are more available.
+Some plugins are included by default in the [`quartz.config.ts`](https://github.com/jackyzha0/quartz/blob/v4/quartz.config.ts), but there are more available.
 
 You can see a list of all plugins and their configuration options [[tags/plugin|here]].
 
 If you'd like to make your own plugins, see the [[making plugins|making custom plugins]] guide.
+
+## Fonts
+
+Fonts can be specified as a `string` or a `FontSpecification`:
+
+```ts
+// string
+typography: {
+  header: "Schibsted Grotesk",
+  ...
+}
+
+// FontSpecification
+typography: {
+  header: {
+    name: "Schibsted Grotesk",
+    weights: [400, 700],
+    includeItalic: true,
+  },
+  ...
+}
+```
