@@ -1,0 +1,35 @@
+name: Wiki-Evolve
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'
+  workflow_dispatch:
+
+jobs:
+  evolve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm ci
+
+      - name: Evolve Wiki
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: npx tsx scripts/evolve.ts run
+
+      - name: Commit & Push
+        run: |
+          git config user.name "llm-wiki-bot"
+          git config user.email "bot@wiki.local"
+          git add content/ raw/.ingest-cache.json
+          git diff --staged --quiet || git commit -m "chore: weekly wiki evolution"
+          git push
