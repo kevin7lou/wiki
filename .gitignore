@@ -12,3 +12,7 @@ replit.nix
 .makemd
 .space
 .trash
+
+# LLM Wiki
+raw/sources/**/*.md
+raw/.ingest-cache.json
