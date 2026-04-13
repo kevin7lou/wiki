@@ -76,12 +76,16 @@ export async function fetchFeeds(rawDir: string, cacheFile: string): Promise<str
 }
 
 async function parseFeed(url: string, category: string): Promise<FeedItem[]> {
-  const response = await fetch(url)
+  const response = await fetch(url, { signal: AbortSignal.timeout(15000) })
   if (!response.ok) {
     throw new Error(`Feed fetch failed: ${response.status}`)
   }
   const xml = await response.text()
-  const parser = new XMLParser({ ignoreAttributes: false })
+  const parser = new XMLParser({
+    ignoreAttributes: false,
+    htmlEntities: true,
+    processEntities: false,
+  })
   const parsed = parser.parse(xml)
 
   const items: FeedItem[] = []
@@ -106,9 +110,7 @@ async function parseFeed(url: string, category: string): Promise<FeedItem[]> {
   if (atomEntries) {
     const list = Array.isArray(atomEntries) ? atomEntries : [atomEntries]
     for (const entry of list) {
-      const link = typeof entry.link === "string"
-        ? entry.link
-        : entry.link?.["@_href"] ?? ""
+      const link = typeof entry.link === "string" ? entry.link : (entry.link?.["@_href"] ?? "")
       items.push({
         title: entry.title ?? "Untitled",
         link,
@@ -125,7 +127,7 @@ async function parseFeed(url: string, category: string): Promise<FeedItem[]> {
 async function fetchArticle(item: FeedItem): Promise<string | null> {
   if (!item.link) return null
 
-  const response = await fetch(item.link)
+  const response = await fetch(item.link, { signal: AbortSignal.timeout(15000) })
   if (!response.ok) return null
   const html = await response.text()
 

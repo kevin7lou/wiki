@@ -1,5 +1,5 @@
 import path from "path"
-import { loadConfig } from "./config"
+import { loadConfig, loadPaths } from "./config"
 import { fetchFeeds } from "./lib/fetch-sources"
 import { autoIngest } from "./lib/ingest"
 import { runStructuralLint } from "./lib/lint"
@@ -46,9 +46,9 @@ async function main(): Promise<void> {
 }
 
 async function runFetch(): Promise<void> {
-  const config = loadConfig()
+  const paths = loadPaths()
   console.log("=== Fetch ===")
-  const newFiles = await fetchFeeds(config.paths.raw, config.paths.cache)
+  const newFiles = await fetchFeeds(paths.raw, paths.cache)
   console.log(`Fetched ${newFiles.length} new articles.\n`)
 }
 
@@ -91,9 +91,9 @@ async function runIngest(): Promise<void> {
 }
 
 async function runLint(): Promise<void> {
-  const config = loadConfig()
+  const paths = loadPaths()
   console.log("=== Lint ===")
-  const results = await runStructuralLint(config.paths.content)
+  const results = await runStructuralLint(paths.content)
 
   if (results.length === 0) {
     console.log("No issues found.\n")

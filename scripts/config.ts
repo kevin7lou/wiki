@@ -18,6 +18,18 @@ export interface EvolveConfig {
   }
 }
 
+export function loadPaths() {
+  const root = path.resolve(process.cwd())
+  return {
+    root,
+    content: path.join(root, "content"),
+    raw: path.join(root, "raw"),
+    schema: path.join(root, "SCHEMA.md"),
+    purpose: path.join(root, "PURPOSE.md"),
+    cache: path.join(root, "raw", ".ingest-cache.json"),
+  }
+}
+
 export function loadConfig(): EvolveConfig {
   const provider = (process.env.LLM_PROVIDER ?? "anthropic") as "anthropic" | "openai"
 
@@ -38,21 +50,12 @@ export function loadConfig(): EvolveConfig {
     )
   }
 
-  const root = path.resolve(process.cwd())
-
   return {
     llm: {
       provider,
       apiKey,
       model: process.env.LLM_MODEL ?? modelMap[provider],
     },
-    paths: {
-      root,
-      content: path.join(root, "content"),
-      raw: path.join(root, "raw"),
-      schema: path.join(root, "SCHEMA.md"),
-      purpose: path.join(root, "PURPOSE.md"),
-      cache: path.join(root, "raw", ".ingest-cache.json"),
-    },
+    paths: loadPaths(),
   }
 }
