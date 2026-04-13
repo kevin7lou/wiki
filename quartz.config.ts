@@ -16,7 +16,7 @@ const config: QuartzConfig = {
     // },
     locale: "en-US",
     baseUrl: "kevin7lou.github.io/wiki",
-    ignorePatterns: ["Private", "Templates", ".obsidian"],
+    ignorePatterns: ["Private", "Templates", ".obsidian", "scripts", "raw"],
     defaultDateType: "created",
     theme: {
       fontOrigin: "googleFonts",
@@ -65,7 +65,7 @@ const config: QuartzConfig = {
         },
         keepBackground: false,
       }),
-      Plugin.ObsidianFlavoredMarkdown({ 
+      Plugin.ObsidianFlavoredMarkdown({
         // comments: true,
         highlight: true,
         // callouts: true,
